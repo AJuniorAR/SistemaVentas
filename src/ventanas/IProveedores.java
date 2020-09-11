@@ -34,73 +34,65 @@ public class IProveedores extends javax.swing.JInternalFrame {
     public int tmpFp = finalPag;
     public int inicioPag = 0;
     public int numRegistros = 0;
-    
+
     public IProveedores() {
         initComponents();
         cp = new CProveedor();
-        mtp = new ModeloTablaProveedor(inicioPag,finalPag);
+        mtp = new ModeloTablaProveedor(inicioPag, finalPag);
         numRegistros = mtp.getCantidadRegistros();
-        if(finalPag > numRegistros)
-       {
-           finalPag = numRegistros;
-           bntUltimo.setEnabled(false);
-           bntSiguiente.setEnabled(false);
-           bntAnterior.setEnabled(true);
+        if (finalPag > numRegistros) {
+            finalPag = numRegistros;
+            bntUltimo.setEnabled(false);
+            bntSiguiente.setEnabled(false);
+            bntAnterior.setEnabled(true);
             btnPrimero.setEnabled(true);
-       }
+        }
         tblProveedores.setModel(mtp);
         Helper.ajustarAnchoColumnas(tblProveedores);
-        setFiltroTexto();        
+        setFiltroTexto();
         setEventSelectionModel(tblProveedores.getSelectionModel());
     }
 
-    private void setEventSelectionModel(ListSelectionModel lsm)
-    {
-        ListSelectionListener lsl = new ListSelectionListener(){
+    private void setEventSelectionModel(ListSelectionModel lsm) {
+        ListSelectionListener lsl = new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 selectionEvent(e);
             }
         };
-        
+
         lsm.addListSelectionListener(lsl);
     }
-    
-    private void selectionEvent(ListSelectionEvent e)
-    {
-        if(tblProveedores.getSelectedRow() != -1)
-       {
-           cp.setProveedor(mtp.getFila(tblProveedores.getSelectedRow()));
-           setProveedor();           
-       }
+
+    private void selectionEvent(ListSelectionEvent e) {
+        if (tblProveedores.getSelectedRow() != -1) {
+            cp.setProveedor(mtp.getFila(tblProveedores.getSelectedRow()));
+            setProveedor();
+        }
     }
-    
-    private void setProveedor()
-    {
-           this.txtRuc.setText(cp.getProveedor().getRuc());
-           this.txtProveedor.setText(cp.getProveedor().getRazonSocial());
-           this.txtCiudad.setText(cp.getProveedor().getCiudad());
-           this.txtAProductos.setText(cp.getProveedor().getProductos());
-           this.txtContacto.setText(cp.getProveedor().getNomContacto());
-           this.txtDireccion.setText(cp.getProveedor().getDireccion());
-           this.txtEmail.setText(cp.getProveedor().getEmail());
-           this.txtFax.setText(cp.getProveedor().getFax());
-           this.txtMovil.setText(cp.getProveedor().getFax());
-           this.txtNextel.setText(cp.getProveedor().getNextel());
-           this.txtNumCuenta.setText(cp.getProveedor().getCtaBancaria());
-           this.txtRubro.setText(cp.getProveedor().getRubro());
-           this.txtTelf.setText(cp.getProveedor().getTelefono());
-           if(cp.getProveedor().getActivo() == 1)
-           {
-              chbSetActivo(true); 
-           }else
-           {
-               chbSetActivo(false); 
-           }
-           this.bntModificar.setEnabled(true);
+
+    private void setProveedor() {
+        this.txtRuc.setText(cp.getProveedor().getRuc());
+        this.txtProveedor.setText(cp.getProveedor().getRazonSocial());
+        this.txtCiudad.setText(cp.getProveedor().getCiudad());
+        this.txtAProductos.setText(cp.getProveedor().getProductos());
+        this.txtContacto.setText(cp.getProveedor().getNomContacto());
+        this.txtDireccion.setText(cp.getProveedor().getDireccion());
+        this.txtEmail.setText(cp.getProveedor().getEmail());
+        this.txtFax.setText(cp.getProveedor().getFax());
+        this.txtMovil.setText(cp.getProveedor().getFax());
+        this.txtNextel.setText(cp.getProveedor().getNextel());
+        this.txtNumCuenta.setText(cp.getProveedor().getCtaBancaria());
+        this.txtRubro.setText(cp.getProveedor().getRubro());
+        this.txtTelf.setText(cp.getProveedor().getTelefono());
+        if (cp.getProveedor().getActivo() == 1) {
+            chbSetActivo(true);
+        } else {
+            chbSetActivo(false);
+        }
+        this.bntModificar.setEnabled(true);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,6 +207,11 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtRuc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtRuc.setName("pruc"); // NOI18N
         txtRuc.setPreferredSize(new java.awt.Dimension(120, 25));
+        txtRuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRucKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -334,6 +331,11 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtProveedor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtProveedor.setName("prover"); // NOI18N
         txtProveedor.setPreferredSize(new java.awt.Dimension(320, 25));
+        txtProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProveedorKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -357,6 +359,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
 
         txtCiudad.setEditable(false);
         txtCiudad.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCiudad.setName("pciudad"); // NOI18N
         txtCiudad.setPreferredSize(new java.awt.Dimension(320, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -369,6 +372,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtTelf.setEditable(false);
         txtTelf.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtTelf.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelf.setName("ptelefono"); // NOI18N
         txtTelf.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -380,6 +384,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtNextel.setEditable(false);
         txtNextel.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtNextel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNextel.setName("pnextel"); // NOI18N
         txtNextel.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -391,6 +396,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtMovil.setEditable(false);
         txtMovil.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMovil.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMovil.setName("pmovil"); // NOI18N
         txtMovil.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 13;
@@ -401,6 +407,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtFax.setEditable(false);
         txtFax.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtFax.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFax.setName("pfax"); // NOI18N
         txtFax.setPreferredSize(new java.awt.Dimension(120, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 13;
@@ -410,6 +417,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
 
         txtNumCuenta.setEditable(false);
         txtNumCuenta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNumCuenta.setName("pcuenta"); // NOI18N
         txtNumCuenta.setPreferredSize(new java.awt.Dimension(150, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -420,6 +428,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
 
         txtContacto.setEditable(false);
         txtContacto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtContacto.setName("pcontacto"); // NOI18N
         txtContacto.setPreferredSize(new java.awt.Dimension(320, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -432,6 +441,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
         txtEmail.setEditable(false);
         txtEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtEmail.setInputVerifier(new VerificadorEntrada(125,VerificadorEntrada.EMAIL));
+        txtEmail.setName("pemail"); // NOI18N
         txtEmail.setPreferredSize(new java.awt.Dimension(320, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -443,6 +453,7 @@ public class IProveedores extends javax.swing.JInternalFrame {
 
         txtRubro.setEditable(false);
         txtRubro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtRubro.setName("prubro"); // NOI18N
         txtRubro.setPreferredSize(new java.awt.Dimension(150, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -683,23 +694,21 @@ public class IProveedores extends javax.swing.JInternalFrame {
 
     private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarActionPerformed
         int opcion = JOptionPane.showInternalConfirmDialog(this, "¿Desea Eliminar este proveedor?", "Desea Eliminar", JOptionPane.YES_NO_CANCEL_OPTION);
-        if(opcion == JOptionPane.OK_OPTION)
-        { 
+        if (opcion == JOptionPane.OK_OPTION) {
             //mtp.borrarFila(tblProveedores.getSelectedRow());
             int rs = cp.borrarRegistro(cp.getProveedor());
-            if(rs != 0)
-            {
+            if (rs != 0) {
                 JOptionPane.showMessageDialog(this, "Regisro Eliminado correctamente", "Registro Eliminado", JOptionPane.INFORMATION_MESSAGE);
-             mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-             this.numRegistros = mtp.getCantidadRegistros();
-             tblProveedores.setModel(mtp);
+                mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+                this.numRegistros = mtp.getCantidadRegistros();
+                tblProveedores.setModel(mtp);
             }
             System.out.println(rs);
         }
     }//GEN-LAST:event_bntEliminarActionPerformed
 
     private void bntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarActionPerformed
-        ECampos.setEditableTexto(this.pnlEntradas, true, null,false,null);
+        ECampos.setEditableTexto(this.pnlEntradas, true, null, false, null);
         //ECampos.buscarBotones(this.pnlBuscador, false, null);
         this.pnlBuscador.setVisible(false);
         bntModificar.setEnabled(false);
@@ -711,455 +720,421 @@ public class IProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntModificarActionPerformed
 
     private void bntNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntNuevoActionPerformed
-       //ECampos.buscarBotones(this.pnlBuscador, false, null);
-       ECampos.setEditableTexto(this.pnlEntradas, true, null,true,"");
-       this.bntModificar.setEnabled(false);
-       this.bntEliminar.setEnabled(false);
-       this.tblProveedores.setEnabled(false);//asas
-       bntNuevo.setEnabled(false);
-       bntGuardar.setEnabled(true);
-       this.tblProveedores.clearSelection();
-       esActualizacion = false;
-       this.pnlBuscador.setVisible(false);
-       
+        //ECampos.buscarBotones(this.pnlBuscador, false, null);
+        ECampos.setEditableTexto(this.pnlEntradas, true, null, true, "");
+        this.bntModificar.setEnabled(false);
+        this.bntEliminar.setEnabled(false);
+        this.tblProveedores.setEnabled(false);//asas
+        bntNuevo.setEnabled(false);
+        bntGuardar.setEnabled(true);
+        this.tblProveedores.clearSelection();
+        esActualizacion = false;
+        this.pnlBuscador.setVisible(false);
+
     }//GEN-LAST:event_bntNuevoActionPerformed
 
     private void bntCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelarActionPerformed
-       //ECampos.buscarBotones(this.pnlBuscador, true, null);
-       ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
-       this.bntModificar.setEnabled(false);
-       this.tblProveedores.clearSelection();
-       this.bntEliminar.setEnabled(true);
-       this.tblProveedores.setEnabled(true);
-       bntNuevo.setEnabled(true);
-       bntGuardar.setEnabled(false);
-       ECampos.esObligatorio(this.pnlEntradas,false);
-       System.out.println(txtRuc.getText());
-       System.out.println(txtProveedor.getText());
-       esActualizacion = false;
-       chbEstado.setEnabled(false);
-       this.pnlBuscador.setVisible(true);
-    }//GEN-LAST:event_bntCancelarActionPerformed
-
-    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-       if(esActualizacion)
-       {
-           if(!this.verficarCambios())
-            {
-                JOptionPane.showMessageDialog(this, "Debe cambiar por lo menos algun valor", "No hubo cambios", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-       }
-        boolean correcto = guardarActualizar(); 
-        if(!correcto)
-        {
-            return;
-        }
-       
-       if(!esActualizacion && correcto)
-       {        
-        ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
-       }
-       if(tipoSeleccion == -1)
-        {
-            this.mtp = new ModeloTablaProveedor(inicioPag,finalPag);
-            tblProveedores.setModel(mtp);
-        }else if(tipoSeleccion == 1)
-        {
-            this.mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-            tblProveedores.setModel(mtp);
-        }
-       this.numRegistros = mtp.getCantidadRegistros();
-       //ECampos.buscarBotones(this.pnlBuscador, true, null); 
-       this.pnlBuscador.setVisible(true);
-       this.bntModificar.setEnabled(true);
+        //ECampos.buscarBotones(this.pnlBuscador, true, null);
+        ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
+        this.bntModificar.setEnabled(false);
+        this.tblProveedores.clearSelection();
         this.bntEliminar.setEnabled(true);
         this.tblProveedores.setEnabled(true);
         bntNuevo.setEnabled(true);
         bntGuardar.setEnabled(false);
-        ECampos.esObligatorio(this.pnlEntradas,false);
+        ECampos.esObligatorio(this.pnlEntradas, false);
         System.out.println(txtRuc.getText());
         System.out.println(txtProveedor.getText());
-        chbEstado.setEnabled(false);  
-       esActualizacion = false;
+        esActualizacion = false;
+        chbEstado.setEnabled(false);
+        this.pnlBuscador.setVisible(true);
+    }//GEN-LAST:event_bntCancelarActionPerformed
+
+    private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
+        if (ECampos.esObligatorio(this.pnlEntradas, true)) {
+            JOptionPane.showInternalMessageDialog(this, "Los campos Marcados "
+                    + "son oligatorios", "No deje campos vacios", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (esActualizacion) {
+            if (!this.verficarCambios()) {
+                JOptionPane.showMessageDialog(this, "Debe cambiar por lo menos algun valor", "No hubo cambios", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+        }
+        boolean correcto = guardarActualizar();
+        if (!correcto) {
+            return;
+        }
+
+        if (!esActualizacion && correcto) {
+            ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
+        }
+        if (tipoSeleccion == -1) {
+            this.mtp = new ModeloTablaProveedor(inicioPag, finalPag);
+            tblProveedores.setModel(mtp);
+        } else if (tipoSeleccion == 1) {
+            this.mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+            tblProveedores.setModel(mtp);
+        }
+        this.numRegistros = mtp.getCantidadRegistros();
+        //ECampos.buscarBotones(this.pnlBuscador, true, null); 
+        this.pnlBuscador.setVisible(true);
+        this.bntModificar.setEnabled(true);
+        this.bntEliminar.setEnabled(true);
+        this.tblProveedores.setEnabled(true);
+        bntNuevo.setEnabled(true);
+        bntGuardar.setEnabled(false);
+        ECampos.esObligatorio(this.pnlEntradas, false);
+        System.out.println(txtRuc.getText());
+        System.out.println(txtProveedor.getText());
+        chbEstado.setEnabled(false);
+        esActualizacion = false;
     }//GEN-LAST:event_bntGuardarActionPerformed
 
     private void rbTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTodosActionPerformed
-       tipoSeleccion = -1;
-       inicioPag = 0;  
-       finalPag = tmpFp;
-       mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-       numRegistros = mtp.getCantidadRegistros();
-       if(finalPag > numRegistros)
-       {
-           finalPag = numRegistros;
-           bntUltimo.setEnabled(false);
-           bntSiguiente.setEnabled(false);
-       }else{
-             bntUltimo.setEnabled(true);
-           bntSiguiente.setEnabled(true);
-        }  
-       tblProveedores.setModel(mtp);
-       chbSetActivo(true);
-       ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
+        tipoSeleccion = -1;
+        inicioPag = 0;
+        finalPag = tmpFp;
+        mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+        numRegistros = mtp.getCantidadRegistros();
+        if (finalPag > numRegistros) {
+            finalPag = numRegistros;
+            bntUltimo.setEnabled(false);
+            bntSiguiente.setEnabled(false);
+        } else {
+            bntUltimo.setEnabled(true);
+            bntSiguiente.setEnabled(true);
+        }
+        tblProveedores.setModel(mtp);
+        chbSetActivo(true);
+        ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
     }//GEN-LAST:event_rbTodosActionPerformed
 
     private void rbAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAtivosActionPerformed
         tipoSeleccion = 1;
-        inicioPag = 0; 
-       finalPag = tmpFp;
-        mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
+        inicioPag = 0;
+        finalPag = tmpFp;
+        mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
         numRegistros = mtp.getCantidadRegistros();
-        if(finalPag > numRegistros)
-       {
-           finalPag = numRegistros;
-           bntUltimo.setEnabled(false);
-           bntSiguiente.setEnabled(false);
-       }else{
-             bntUltimo.setEnabled(true);
-           bntSiguiente.setEnabled(true);
+        if (finalPag > numRegistros) {
+            finalPag = numRegistros;
+            bntUltimo.setEnabled(false);
+            bntSiguiente.setEnabled(false);
+        } else {
+            bntUltimo.setEnabled(true);
+            bntSiguiente.setEnabled(true);
         }
         tblProveedores.setModel(mtp);
         chbSetActivo(true);
-        ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
+        ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
     }//GEN-LAST:event_rbAtivosActionPerformed
 
     private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
         tipoSeleccion = 0;
-        inicioPag = 0; 
+        inicioPag = 0;
         finalPag = tmpFp;
-        mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
+        mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
         numRegistros = mtp.getCantidadRegistros();
-        if(finalPag > numRegistros)
-       {
-           finalPag = numRegistros;
-           bntUltimo.setEnabled(false);
-           bntSiguiente.setEnabled(false);
-       }else{
-             bntUltimo.setEnabled(true);
-           bntSiguiente.setEnabled(true);
+        if (finalPag > numRegistros) {
+            finalPag = numRegistros;
+            bntUltimo.setEnabled(false);
+            bntSiguiente.setEnabled(false);
+        } else {
+            bntUltimo.setEnabled(true);
+            bntSiguiente.setEnabled(true);
         }
         tblProveedores.setModel(mtp);
         chbSetActivo(false);
-        ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
+        ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
     }//GEN-LAST:event_rbNoActivosActionPerformed
 
     private void chbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbEstadoActionPerformed
-        
-      chbSetActivo(chbEstado.isSelected());
-        
+
+        chbSetActivo(chbEstado.isSelected());
+
     }//GEN-LAST:event_chbEstadoActionPerformed
 
     private void bntSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSiguienteActionPerformed
-            inicioPag += finalPag; 
-            if(finalPag>=this.numRegistros)
-            {
-                bntSiguiente.setEnabled(false);
-                bntUltimo.setEnabled(false);
-                bntAnterior.setEnabled(true);
-                btnPrimero.setEnabled(true);
-                return;
-            }
-            if(tipoSeleccion == -1)
-            {
-                this.mtp = new ModeloTablaProveedor(inicioPag,finalPag);                
-            }else if(tipoSeleccion == 1)
-            {
-                this.mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-            }
-            tblProveedores.setModel(mtp);
-           bntAnterior.setEnabled(true);
-           btnPrimero.setEnabled(true);
-           if((inicioPag+finalPag)>=this.numRegistros)
-            {                
-                 bntSiguiente.setEnabled(false);
-                 bntUltimo.setEnabled(false);
-            }
+        inicioPag += finalPag;
+        if (finalPag >= this.numRegistros) {
+            bntSiguiente.setEnabled(false);
+            bntUltimo.setEnabled(false);
+            bntAnterior.setEnabled(true);
+            btnPrimero.setEnabled(true);
+            return;
+        }
+        if (tipoSeleccion == -1) {
+            this.mtp = new ModeloTablaProveedor(inicioPag, finalPag);
+        } else if (tipoSeleccion == 1) {
+            this.mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+        }
+        tblProveedores.setModel(mtp);
+        bntAnterior.setEnabled(true);
+        btnPrimero.setEnabled(true);
+        if ((inicioPag + finalPag) >= this.numRegistros) {
+            bntSiguiente.setEnabled(false);
+            bntUltimo.setEnabled(false);
+        }
     }//GEN-LAST:event_bntSiguienteActionPerformed
 
     private void bntAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAnteriorActionPerformed
-            inicioPag -= finalPag;  
-            System.out.println(inicioPag+" > "+this.numRegistros);
-            if(inicioPag<0)
-            {
-                inicioPag = 0;
-                bntAnterior.setEnabled(false);
-                btnPrimero.setEnabled(false);
-                bntUltimo.setEnabled(true);
-                bntSiguiente.setEnabled(true);
-                return;
-                
-            }
-            if(tipoSeleccion == -1)
-            {
-                this.mtp = new ModeloTablaProveedor(inicioPag,finalPag);                
-            }else if(tipoSeleccion == 1)
-            {
-                this.mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-            }
-            tblProveedores.setModel(mtp);
+        inicioPag -= finalPag;
+        System.out.println(inicioPag + " > " + this.numRegistros);
+        if (inicioPag < 0) {
+            inicioPag = 0;
+            bntAnterior.setEnabled(false);
+            btnPrimero.setEnabled(false);
             bntUltimo.setEnabled(true);
             bntSiguiente.setEnabled(true);
-            btnPrimero.setEnabled(true);
-            if((inicioPag-finalPag)<0)
-            {
-                
-                inicioPag = 0;
-                bntAnterior.setEnabled(false);
-                btnPrimero.setEnabled(false);
-            }
+            return;
+
+        }
+        if (tipoSeleccion == -1) {
+            this.mtp = new ModeloTablaProveedor(inicioPag, finalPag);
+        } else if (tipoSeleccion == 1) {
+            this.mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+        }
+        tblProveedores.setModel(mtp);
+        bntUltimo.setEnabled(true);
+        bntSiguiente.setEnabled(true);
+        btnPrimero.setEnabled(true);
+        if ((inicioPag - finalPag) < 0) {
+
+            inicioPag = 0;
+            bntAnterior.setEnabled(false);
+            btnPrimero.setEnabled(false);
+        }
     }//GEN-LAST:event_bntAnteriorActionPerformed
 
     private void bntUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntUltimoActionPerformed
-            inicioPag = this.numRegistros - finalPag;
-            if(finalPag>=this.numRegistros)
-            {
-                bntSiguiente.setEnabled(false);
-                bntUltimo.setEnabled(false);
-                bntAnterior.setEnabled(true);
-                btnPrimero.setEnabled(true);
-                return;
-            }
-            if(inicioPag-finalPag<0)
-            {
-               inicioPag = finalPag; 
-            }
-            if(tipoSeleccion == -1)
-            {
-                this.mtp = new ModeloTablaProveedor(inicioPag,finalPag);                
-            }else if(tipoSeleccion == 1)
-            {
-                this.mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-            }
-            tblProveedores.setModel(mtp);
-            bntUltimo.setEnabled(false);
+        inicioPag = this.numRegistros - finalPag;
+        if (finalPag >= this.numRegistros) {
             bntSiguiente.setEnabled(false);
+            bntUltimo.setEnabled(false);
             bntAnterior.setEnabled(true);
             btnPrimero.setEnabled(true);
+            return;
+        }
+        if (inicioPag - finalPag < 0) {
+            inicioPag = finalPag;
+        }
+        if (tipoSeleccion == -1) {
+            this.mtp = new ModeloTablaProveedor(inicioPag, finalPag);
+        } else if (tipoSeleccion == 1) {
+            this.mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+        }
+        tblProveedores.setModel(mtp);
+        bntUltimo.setEnabled(false);
+        bntSiguiente.setEnabled(false);
+        bntAnterior.setEnabled(true);
+        btnPrimero.setEnabled(true);
     }//GEN-LAST:event_bntUltimoActionPerformed
 
     private void btnPrimeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeroActionPerformed
-            inicioPag =0;
-            if(tipoSeleccion == -1)
-            {
-                this.mtp = new ModeloTablaProveedor(inicioPag,finalPag);                
-            }else if(tipoSeleccion == 1)
-            {
-                this.mtp = new ModeloTablaProveedor(tipoSeleccion,inicioPag,finalPag);
-            }
-            tblProveedores.setModel(mtp);
-            btnPrimero.setEnabled(false);
-            bntSiguiente.setEnabled(true);
-            bntAnterior.setEnabled(false);
-            bntUltimo.setEnabled(true);
+        inicioPag = 0;
+        if (tipoSeleccion == -1) {
+            this.mtp = new ModeloTablaProveedor(inicioPag, finalPag);
+        } else if (tipoSeleccion == 1) {
+            this.mtp = new ModeloTablaProveedor(tipoSeleccion, inicioPag, finalPag);
+        }
+        tblProveedores.setModel(mtp);
+        btnPrimero.setEnabled(false);
+        bntSiguiente.setEnabled(true);
+        bntAnterior.setEnabled(false);
+        bntUltimo.setEnabled(true);
     }//GEN-LAST:event_btnPrimeroActionPerformed
 
     private void bntBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarActionPerformed
-       BuscarProveedor pvc = new BuscarProveedor(tipoSeleccion);
-       JLabel aviso = pvc.getAviso();
-       String msj = (tipoSeleccion==-1?"Mostrando todos los Proveedores existentes":(tipoSeleccion==1?"Mostrando todo los usuarios activos":"Mostrando todo los usuarios No activos"));
-        JOptionPane.showInternalOptionDialog(this, pvc, msj,JOptionPane.OK_CANCEL_OPTION,
-                                            JOptionPane.QUESTION_MESSAGE, null, new Object[]{aviso},null);
-   
-        if(pvc.getProveedor() != null)
-        {
-           cp.setProveedor(pvc.getProveedor());
-           setProveedor();
+        BuscarProveedor pvc = new BuscarProveedor(tipoSeleccion);
+        JLabel aviso = pvc.getAviso();
+        String msj = (tipoSeleccion == -1 ? "Mostrando todos los Proveedores existentes" : (tipoSeleccion == 1 ? "Mostrando todo los usuarios activos" : "Mostrando todo los usuarios No activos"));
+        JOptionPane.showInternalOptionDialog(this, pvc, msj, JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, new Object[]{aviso}, null);
+
+        if (pvc.getProveedor() != null) {
+            cp.setProveedor(pvc.getProveedor());
+            setProveedor();
         }
     }//GEN-LAST:event_bntBuscarActionPerformed
 
     private void bntSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalirActionPerformed
-       cerrarVentana();
+        cerrarVentana();
     }//GEN-LAST:event_bntSalirActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();
     }//GEN-LAST:event_formInternalFrameClosing
 
-    private void cerrarVentana()
-    {
+    private void txtRucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRucKeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }else{
+          if(txtRuc.getText().length()== 11){
+            evt.consume();
+            }  
+        }  
+    }//GEN-LAST:event_txtRucKeyTyped
+
+    private void txtProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProveedorKeyTyped
+        char validar = evt.getKeyChar();    
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }   
+    }//GEN-LAST:event_txtProveedorKeyTyped
+
+    private void cerrarVentana() {
         int opcio = JOptionPane.showInternalConfirmDialog(this, "Perderá todos los datos"
                 + " que no hayan sido guardados\n"
-                + "¿Desea cerrar esta ventana?", "¿Desea cerrar la ventana?", 
-                JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
-        if(opcio==JOptionPane.OK_OPTION)
-        {
+                + "¿Desea cerrar esta ventana?", "¿Desea cerrar la ventana?",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (opcio == JOptionPane.OK_OPTION) {
             cp = new CProveedor();
             inicioPag = 0;
             tipoSeleccion = -1;
-            mtp = new ModeloTablaProveedor(inicioPag,finalPag);
+            mtp = new ModeloTablaProveedor(inicioPag, finalPag);
             numRegistros = mtp.getCantidadRegistros();
-            
-            ECampos.setEditableTexto(this.pnlEntradas, false, null,true,"");
+
+            ECampos.setEditableTexto(this.pnlEntradas, false, null, true, "");
             this.bntModificar.setEnabled(false);
             this.tblProveedores.clearSelection();
             this.bntEliminar.setEnabled(true);
             this.tblProveedores.setEnabled(true);
             bntNuevo.setEnabled(true);
             bntGuardar.setEnabled(false);
-            ECampos.esObligatorio(this.pnlEntradas,false);            
+            ECampos.esObligatorio(this.pnlEntradas, false);
             esActualizacion = false;
             chbEstado.setEnabled(false);
             this.pnlBuscador.setVisible(true);
             this.rbTodos.setSelected(true);
-            
-            if(finalPag > numRegistros)
-            {
+
+            if (finalPag > numRegistros) {
                 finalPag = numRegistros;
                 bntUltimo.setEnabled(false);
                 bntSiguiente.setEnabled(false);
                 bntAnterior.setEnabled(true);
-                 btnPrimero.setEnabled(true);
+                btnPrimero.setEnabled(true);
             }
             this.dispose();
         }
     }
-    
-    public void chbSetActivo(boolean opcion)
-    {
+
+    public void chbSetActivo(boolean opcion) {
         chbEstado.setSelected(true);
         chbEstado.setText("Activo");
-        chbEstado.setBackground(new Color(104,204,0));
+        chbEstado.setBackground(new Color(104, 204, 0));
         chbEstado.setForeground(Color.BLACK);
-        if(!opcion)
-        {
+        if (!opcion) {
             chbEstado.setSelected(false);
             chbEstado.setText("No Activo");
             chbEstado.setBackground(Color.red);
             chbEstado.setForeground(Color.WHITE);
         }
     }
-    public void setFiltroTexto()
-    {
+
+    public void setFiltroTexto() {
         Helper.setFiltraEntrada(txtRuc.getDocument(), FiltraEntrada.SOLO_NUMEROS, 15, false);
         Helper.setFiltraEntrada(txtNumCuenta.getDocument(), FiltraEntrada.SOLO_NUMEROS, 30, false);
         Helper.setFiltraEntrada(txtProveedor.getDocument(), FiltraEntrada.NUM_LETRAS, 150, true);
-        Helper.setFiltraEntrada(txtDireccion.getDocument(), FiltraEntrada.NUM_LETRAS, 200, true);        
+        Helper.setFiltraEntrada(txtDireccion.getDocument(), FiltraEntrada.NUM_LETRAS, 200, true);
     }
-    
-    public boolean verficarCambios()
-    {
-        if(cp.getProveedor() != null)
-        {
-          if(!txtRuc.getText().equals(cp.getProveedor().getRuc()))
-          {              
-              return true;
-          }else if(!txtProveedor.getText().equals(cp.getProveedor().getRazonSocial()))
-          {
-              return true;
-          }else if(!txtDireccion.getText().equals(cp.getProveedor().getDireccion()))
-          {
-              return true;
-          }else if(!txtCiudad.getText().equals(cp.getProveedor().getCiudad()))
-          {
-             return true; 
-          }else if(!txtTelf.getText().equals(cp.getProveedor().getTelefono()))
-          {
-             return true; 
-          }else if(!txtNextel.getText().equals(cp.getProveedor().getNextel()))
-          {
-             return true; 
-          }else if(!txtMovil.getText().equals(cp.getProveedor().getMovil()))
-          {
-             return true; 
-          }else if(!txtFax.getText().equals(cp.getProveedor().getFax()))
-          {
-             return true; 
-          }else if(!txtNumCuenta.getText().equals(cp.getProveedor().getCtaBancaria()))
-          {
-             return true;
-          }else if(!txtContacto.getText().equals(cp.getProveedor().getNomContacto()))
-          {
-             return true; 
-          }else if(!txtEmail.getText().equals(cp.getProveedor().getEmail()))
-          {
-             return true; 
-          }else if(!txtRubro.getText().equals(cp.getProveedor().getRubro()))
-          {
-             return true; 
-          }else if(!txtAProductos.getText().equals(cp.getProveedor().getProductos()))
-          {
-             return true; 
-          }else if(chbEstado.isSelected() != (cp.getProveedor().getActivo()==1))
-          {
-              System.out.println(!chbEstado.isSelected() == (cp.getProveedor().getActivo()==0));
-              return true;
-          }else if(!chbEstado.isSelected() != (cp.getProveedor().getActivo()==0))
-          {              
-              return true;
-          }
+
+    public boolean verficarCambios() {
+        if (cp.getProveedor() != null) {
+            if (!txtRuc.getText().equals(cp.getProveedor().getRuc())) {
+                return true;
+            } else if (!txtProveedor.getText().equals(cp.getProveedor().getRazonSocial())) {
+                return true;
+            } else if (!txtDireccion.getText().equals(cp.getProveedor().getDireccion())) {
+                return true;
+            } else if (!txtCiudad.getText().equals(cp.getProveedor().getCiudad())) {
+                return true;
+            } else if (!txtTelf.getText().equals(cp.getProveedor().getTelefono())) {
+                return true;
+            } else if (!txtNextel.getText().equals(cp.getProveedor().getNextel())) {
+                return true;
+            } else if (!txtMovil.getText().equals(cp.getProveedor().getMovil())) {
+                return true;
+            } else if (!txtFax.getText().equals(cp.getProveedor().getFax())) {
+                return true;
+            } else if (!txtNumCuenta.getText().equals(cp.getProveedor().getCtaBancaria())) {
+                return true;
+            } else if (!txtContacto.getText().equals(cp.getProveedor().getNomContacto())) {
+                return true;
+            } else if (!txtEmail.getText().equals(cp.getProveedor().getEmail())) {
+                return true;
+            } else if (!txtRubro.getText().equals(cp.getProveedor().getRubro())) {
+                return true;
+            } else if (!txtAProductos.getText().equals(cp.getProveedor().getProductos())) {
+                return true;
+            } else if (chbEstado.isSelected() != (cp.getProveedor().getActivo() == 1)) {
+                System.out.println(!chbEstado.isSelected() == (cp.getProveedor().getActivo() == 0));
+                return true;
+            } else if (!chbEstado.isSelected() != (cp.getProveedor().getActivo() == 0)) {
+                return true;
+            }
         }
-        
+
         return false;
     }
-    
-    
-    private boolean guardarActualizar()
-    {
+
+    private boolean guardarActualizar() {
         String msj = "¿Desea registrar nuevo Proveedor?";
         String titulo = "Grabar Proveedor";
-        String msj2 = "Proveedor con RUC: "+txtRuc.getText()+" ha sido Guardado correctamente";
+        String msj2 = "Proveedor con RUC: " + txtRuc.getText() + " ha sido Guardado correctamente";
         String titulo2 = "Proveedor Nuevo Registrado";
-        if(esActualizacion)
-        {
+        if (esActualizacion) {
             msj = "¿Desea Modificar los Registros de este Proveedor?";
             titulo = "Grabar Modificar datos";
-            msj2 = "Proveedor con RUC: "+txtRuc.getText()+" ha sido Actualizado correctamente";
+            msj2 = "Proveedor con RUC: " + txtRuc.getText() + " ha sido Actualizado correctamente";
             titulo2 = "Proveedor Actualizado";
         }
-        if(ECampos.esObligatorio(this.pnlEntradas,true))
-        {
+        if (ECampos.esObligatorio(this.pnlEntradas, true)) {
             JOptionPane.showInternalMessageDialog(this, "Los campos en rojo son obligatorios", "Llene los campos obligatorios", JOptionPane.ERROR_MESSAGE);
             return false;
-        }         
+        }
         int opcion = JOptionPane.showInternalConfirmDialog(this, msj, titulo, JOptionPane.YES_NO_CANCEL_OPTION);
         boolean seguardo = false;
-        if(opcion == JOptionPane.OK_OPTION)
-        {
-         cp.getProveedor().setRuc(this.txtRuc.getText());
-         cp.getProveedor().setRazonSocial(txtProveedor.getText());
-         cp.getProveedor().setDireccion(txtDireccion.getText());
-         cp.getProveedor().setCiudad(txtCiudad.getText());
-         cp.getProveedor().setTelefono(txtTelf.getText());
-         cp.getProveedor().setNextel(txtNextel.getText());
-         cp.getProveedor().setMovil(txtMovil.getText());
-         cp.getProveedor().setFax(txtFax.getText());
-         cp.getProveedor().setCtaBancaria(txtNumCuenta.getText());
-         cp.getProveedor().setNomContacto(txtContacto.getText());
-         cp.getProveedor().setEmail(txtEmail.getText());
-         cp.getProveedor().setRubro(txtRubro.getText());
-         cp.getProveedor().setProductos(txtAProductos.getText());
-            
-            
+        if (opcion == JOptionPane.OK_OPTION) {
+            cp.getProveedor().setRuc(this.txtRuc.getText());
+            cp.getProveedor().setRazonSocial(txtProveedor.getText());
+            cp.getProveedor().setDireccion(txtDireccion.getText());
+            cp.getProveedor().setCiudad(txtCiudad.getText());
+            cp.getProveedor().setTelefono(txtTelf.getText());
+            cp.getProveedor().setNextel(txtNextel.getText());
+            cp.getProveedor().setMovil(txtMovil.getText());
+            cp.getProveedor().setFax(txtFax.getText());
+            cp.getProveedor().setCtaBancaria(txtNumCuenta.getText());
+            cp.getProveedor().setNomContacto(txtContacto.getText());
+            cp.getProveedor().setEmail(txtEmail.getText());
+            cp.getProveedor().setRubro(txtRubro.getText());
+            cp.getProveedor().setProductos(txtAProductos.getText());
+
             //asas
-            
-            if(!esActualizacion)
-            {
+            if (!esActualizacion) {
                 seguardo = cp.guardarRegistro(cp.getProveedor());
-                
-            }else
-            {
-                cp.getProveedor().setActivo(chbEstado.isSelected()?1:0);
+
+            } else {
+                cp.getProveedor().setActivo(chbEstado.isSelected() ? 1 : 0);
                 int act = cp.actualizarRegistro(cp.getProveedor());
-                if(act != 0)
-                {
-                   seguardo = true; 
+                if (act != 0) {
+                    seguardo = true;
                 }
             }
-            if(seguardo)
-            {
+            if (seguardo) {
                 JOptionPane.showInternalMessageDialog(this, msj2, titulo2, JOptionPane.INFORMATION_MESSAGE);
-            }else
-            {
+            } else {
                 JOptionPane.showInternalMessageDialog(this, "Error: no se pudo guardar.", "Error al guardar el registro", JOptionPane.ERROR_MESSAGE);
             }
-            ECampos.esObligatorio(this.pnlEntradas,false);
+            ECampos.esObligatorio(this.pnlEntradas, false);
         }
-        
-        if(opcion == JOptionPane.OK_OPTION && seguardo)
-        {
+
+        if (opcion == JOptionPane.OK_OPTION && seguardo) {
             return true;
-        }        
+        }
         return false;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1215,7 +1190,5 @@ public class IProveedores extends javax.swing.JInternalFrame {
     private elaprendiz.gui.textField.TextField txtRuc;
     private elaprendiz.gui.textField.TextField txtTelf;
     // End of variables declaration//GEN-END:variables
-
-
 
 }

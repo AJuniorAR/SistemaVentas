@@ -297,6 +297,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtDni.setDescripcion("Obligatorio");
         txtDni.setName("tdni"); // NOI18N
         txtDni.setPreferredSize(new java.awt.Dimension(120, 26));
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -331,6 +336,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtNombre.setDescripcion("Obligatorio");
         txtNombre.setName("tnom"); // NOI18N
         txtNombre.setPreferredSize(new java.awt.Dimension(325, 26));
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -343,6 +353,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtApellidos.setDescripcion("Obligatorio");
         txtApellidos.setName("tape"); // NOI18N
         txtApellidos.setPreferredSize(new java.awt.Dimension(325, 26));
+        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidosKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -394,6 +409,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtFono.setDescripcion("Obligatorio");
         txtFono.setName("tfono"); // NOI18N
         txtFono.setPreferredSize(new java.awt.Dimension(150, 26));
+        txtFono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFonoKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -460,11 +480,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         pnlImagen.setLayout(pnlImagenLayout);
         pnlImagenLayout.setHorizontalGroup(
             pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pnlImagenLayout.setVerticalGroup(
             pnlImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 117, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         pnlFoto.add(pnlImagen, java.awt.BorderLayout.CENTER);
@@ -597,6 +617,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
 
         txtCelular.setEditable(false);
         txtCelular.setPreferredSize(new java.awt.Dimension(150, 26));
+        txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCelularKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -606,6 +631,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
 
         txtNextel.setEditable(false);
         txtNextel.setPreferredSize(new java.awt.Dimension(150, 26));
+        txtNextel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNextelKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -684,7 +714,6 @@ public class IUsuario extends javax.swing.JInternalFrame {
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         tPermisos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        tPermisos.setShowsRootHandles(true);
         jScrollPane2.setViewportView(tPermisos);
 
         jPanel6.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -1064,6 +1093,71 @@ private void bntBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
  }
     
 }//GEN-LAST:event_bntBitacoraActionPerformed
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+        char validar = evt.getKeyChar();
+        
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }else{
+          if(txtDni.getText().length()== 8){
+            evt.consume();
+            }  
+        }                   
+    }//GEN-LAST:event_txtDniKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidosKeyTyped
+
+    private void txtFonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFonoKeyTyped
+        char validar = evt.getKeyChar();    
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }else{
+          if(txtFono.getText().length()== 7){
+            evt.consume();
+            }  
+        } 
+    }//GEN-LAST:event_txtFonoKeyTyped
+
+    private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
+       char validar = evt.getKeyChar();    
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }else{
+          if(txtCelular.getText().length()== 9){
+            evt.consume();
+            }  
+        } 
+    }//GEN-LAST:event_txtCelularKeyTyped
+
+    private void txtNextelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNextelKeyTyped
+        char validar = evt.getKeyChar();    
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }else{
+          if(txtNextel.getText().length()== 7){
+            evt.consume();
+            }  
+        } 
+    }//GEN-LAST:event_txtNextelKeyTyped
 
 private void asignarAlmacen(Usuario user)
 {

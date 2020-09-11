@@ -318,6 +318,7 @@ public class IProducto extends javax.swing.JInternalFrame {
         pnlContenedor.add(pnlPaginador);
 
         pnlCodes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlCodes.setName("codefabri"); // NOI18N
         pnlCodes.setOpaque(false);
         pnlCodes.setLayout(new java.awt.GridBagLayout());
 
@@ -340,6 +341,11 @@ public class IProducto extends javax.swing.JInternalFrame {
         txtCodigo.setEditable(false);
         txtCodigo.setName("code"); // NOI18N
         txtCodigo.setPreferredSize(new java.awt.Dimension(180, 26));
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 176);
         pnlCodes.add(txtCodigo, gridBagConstraints);
@@ -420,6 +426,7 @@ public class IProducto extends javax.swing.JInternalFrame {
         pnlCodes.add(jLabel17, gridBagConstraints);
 
         txtCodeFabricante.setEditable(false);
+        txtCodeFabricante.setName("codfabri"); // NOI18N
         txtCodeFabricante.setPreferredSize(new java.awt.Dimension(180, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -893,7 +900,11 @@ public class IProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntModificarActionPerformed
 
     private void bntGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGuardarActionPerformed
-
+        if (ECampos.esObligatorio(this.pnlCodes, true)) {
+            JOptionPane.showInternalMessageDialog(this, "Los campos Marcados "
+                    + "son oligatorios", "No deje campos vacios", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if(this.txtCodigo.getText().isEmpty())
         {
             JOptionPane.showInternalMessageDialog(this, "Ingrese un codigo para el producto",
@@ -1082,6 +1093,14 @@ public class IProducto extends javax.swing.JInternalFrame {
            this.inicializarProducto(pvc.getProducto());
        }
     }//GEN-LAST:event_bntBuscarActionPerformed
+
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCodigoKeyTyped
 
     
     private void getMostrarUltimoProductos()
