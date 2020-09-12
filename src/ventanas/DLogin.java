@@ -248,6 +248,11 @@ public class DLogin extends javax.swing.JDialog {
 
         ptxtPass.setText("123456");
         ptxtPass.setPreferredSize(new java.awt.Dimension(150, 24));
+        ptxtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ptxtPassActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -351,6 +356,10 @@ public class DLogin extends javax.swing.JDialog {
        initMainWindow();
        this.dispose();
     }//GEN-LAST:event_bntCancelarConfigActionPerformed
+
+    private void ptxtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ptxtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ptxtPassActionPerformed
 
     
     private void asignarAlmacen(Usuario user)

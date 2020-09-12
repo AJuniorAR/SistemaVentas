@@ -165,6 +165,11 @@ public class BuscarUsuario extends javax.swing.JPanel {
         jPanel3.add(jLabel1, gridBagConstraints);
 
         txtDato.setPreferredSize(new java.awt.Dimension(250, 26));
+        txtDato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
@@ -563,6 +568,10 @@ private void buttonRect5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         JOptionPane.showInternalMessageDialog(this, "Seleccione una fila de la tabla", "Selecciona una fila", JOptionPane.ERROR_MESSAGE);
     }
 }//GEN-LAST:event_buttonRect5ActionPerformed
+
+    private void txtDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatoActionPerformed
 
     public LabelRect getLbAviso() {
         return lbAviso;

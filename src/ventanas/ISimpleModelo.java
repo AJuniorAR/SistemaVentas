@@ -78,7 +78,6 @@ public class ISimpleModelo extends javax.swing.JInternalFrame {
         panelImage4 = new elaprendiz.gui.panel.PanelImage();
         jPanel3 = new javax.swing.JPanel();
         bntActivar = new elaprendiz.gui.button.ButtonRect();
-        bntModificar = new elaprendiz.gui.button.ButtonRect();
         bntGrabar = new elaprendiz.gui.button.ButtonRect();
         bntEliminar = new elaprendiz.gui.button.ButtonRect();
         bntCancelar = new elaprendiz.gui.button.ButtonRect();
@@ -291,15 +290,6 @@ public class ISimpleModelo extends javax.swing.JInternalFrame {
         });
         jPanel3.add(bntActivar);
 
-        bntModificar.setBackground(new java.awt.Color(51, 153, 255));
-        bntModificar.setText("Modificar");
-        bntModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntModificarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(bntModificar);
-
         bntGrabar.setBackground(new java.awt.Color(51, 153, 255));
         bntGrabar.setText("Grabar");
         bntGrabar.addActionListener(new java.awt.event.ActionListener() {
@@ -367,21 +357,6 @@ private void bntEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              break;    
      }     
 }//GEN-LAST:event_bntEliminarActionPerformed
-
-private void bntModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarActionPerformed
-     switch(tbPane.getSelectedIndex())
-     {
-         case 0:
-             actualizarModelo(evt);
-         break;
-         case 1: 
-             actualizarMarca(evt);
-             break;
-         case 2:
-             actualizarClase(evt);
-             break;    
-     }
-}//GEN-LAST:event_bntModificarActionPerformed
 
 private void bntGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntGrabarActionPerformed
      switch(tbPane.getSelectedIndex())
@@ -830,7 +805,6 @@ public void actualizarEstadoModelo(ActionEvent evt)
     private elaprendiz.gui.button.ButtonRect bntCancelar;
     private elaprendiz.gui.button.ButtonRect bntEliminar;
     private elaprendiz.gui.button.ButtonRect bntGrabar;
-    private elaprendiz.gui.button.ButtonRect bntModificar;
     private elaprendiz.gui.button.ButtonRect bntsalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

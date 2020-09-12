@@ -297,6 +297,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtDni.setDescripcion("Obligatorio");
         txtDni.setName("tdni"); // NOI18N
         txtDni.setPreferredSize(new java.awt.Dimension(120, 26));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
@@ -325,6 +330,11 @@ public class IUsuario extends javax.swing.JInternalFrame {
         txtLogn.setDescripcion("Obligatorio");
         txtLogn.setName("tlog"); // NOI18N
         txtLogn.setPreferredSize(new java.awt.Dimension(120, 26));
+        txtLogn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLognActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -1158,6 +1168,14 @@ private void bntBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }  
         } 
     }//GEN-LAST:event_txtNextelKeyTyped
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtLognActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLognActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLognActionPerformed
 
 private void asignarAlmacen(Usuario user)
 {

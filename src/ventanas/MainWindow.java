@@ -47,6 +47,9 @@ public class MainWindow extends javax.swing.JFrame {
         setTitle("Sistema de Ventas");
         setExtendedState(MAXIMIZED_BOTH);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
+
+        dp.setBackground(new java.awt.Color(244, 251, 255));
+        dp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(dp);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(549, 20));

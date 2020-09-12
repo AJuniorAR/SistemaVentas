@@ -104,7 +104,6 @@ public class PanelAperturaDeInventario extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         bntGrabar = new elaprendiz.gui.button.ButtonRect();
         bntCancelar = new elaprendiz.gui.button.ButtonRect();
-        buttonRect3 = new elaprendiz.gui.button.ButtonRect();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -224,10 +223,6 @@ public class PanelAperturaDeInventario extends javax.swing.JPanel {
         });
         jPanel3.add(bntCancelar);
 
-        buttonRect3.setBackground(new java.awt.Color(51, 153, 255));
-        buttonRect3.setText("buttonRect3");
-        jPanel3.add(buttonRect3);
-
         panelImage1.add(jPanel3);
 
         add(panelImage1, java.awt.BorderLayout.CENTER);
@@ -290,7 +285,6 @@ public class PanelAperturaDeInventario extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private elaprendiz.gui.button.ButtonRect bntCancelar;
     private elaprendiz.gui.button.ButtonRect bntGrabar;
-    private elaprendiz.gui.button.ButtonRect buttonRect3;
     private javax.swing.JFormattedTextField ftxtCosto;
     private javax.swing.JFormattedTextField ftxtFecha;
     private javax.swing.JLabel jLabel1;
